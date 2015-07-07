@@ -1,22 +1,32 @@
-'use strict';
-var Redirect = Redirect || {};
-Redirect = function(ele){
- this._ele = ele;
- this._interval = 3000;
- this._ele.onload = function () {
-        //TODO event cancel
+(function(){
+  'use strict';
+  var Redirect = Redirect || {};
+  Redirect = function(ele){
+   this._ele = ele;
+   this._interval = 3000;
+   this._ele.onload = function () {
+            //TODO event cancel
     };
- this._ele.onabort = img.onerror = function() {
-      //TODO event cancel
+   this._ele.onabort = img.onerror = function() {
+            //TODO event cancel
+
     };
     function timeout(){
-      window.setTimeout(function() {
-        obj.parentNode.removeChild(element);
-      }, this._interval);
-    };
-    this._ele.src = this._ele.getAttribute('data-original');
-}
+        window.setTimeout(function() {
+          obj.parentNode.removeChild(element) || obj.src = '';
+          if(window.stop !== undefined)
+          {
+               window.stop();
+          }
+        }, this._interval);
+    }
+    function ridirect(){
 
+    }
+
+    this._ele.src = this._ele.getAttribute('data-original');
+  }
+})();
 
 /**
 Redirect.prototype = Object.create(null, {

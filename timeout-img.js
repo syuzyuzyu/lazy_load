@@ -32,6 +32,7 @@
             }
         }, this._interval);
         var callback = function(){
+                    //TODO:imgタグのsrc属性を抜いて配置し、alt属性をだす３秒後にsrc属性をセットしレジーロードを実施
           var change_img = document.createElement('img');
           change_img.setAttribute('src', src);
           obj.appendChild(change_img);

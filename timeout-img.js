@@ -16,7 +16,7 @@
           obj.parentNode.removeChild(element) || obj.src = '';
           if(window.stop !== undefined)
           {
-               window.stop();
+               window.stop();//to do?
           }
         }, this._interval);
     }
@@ -25,27 +25,6 @@
     }
 
     this._ele.src = this._ele.getAttribute('data-original');
+    timeout();
   }
 })();
-
-/**
-Redirect.prototype = Object.create(null, {
-  constructor: {
-    value: Redirect
-  },
-  timeout: {
-    value: function() {
-      console.log(this._ele.clientHeight);
-      var obj = this._ele;
-      window.setTimeout(function() {
-          callback();
-      }, this._interval);
-
-      callback = function(){
-          obj.parentNode.removeChild(element);
-      }
-    }
-  }
-});
-**/
-var aa = new Redirect('/smart/shared/img/1527/smp_150625buyer_25016327_image.jpg');

@@ -9,24 +9,22 @@
      change_img.setAttribute('data-original', ele.src);
      change_img.setAttribute('height', ele.clientHeight);
      change_img.setAttribute('width', ele.clientWidth);
+     change_img.setAttribute('src', '');
      ele.parentNode.insertBefore(change_img,ele);
      ele.parentNode.removeChild(ele);
      //return change_img;
    };
-    var aa = function(){
-      console.log('startttt');
-      console.log(ele._interval);
-    };
-    this._ele.onload = function () {
-        console.log('starrrrrr');
-        console.log(aa);
-        aa();
+
+    /*this._ele.onload = function () {
+        console.log('success');
      };
-
-   this._ele.onabort = this._ele.onerror = function() {
-
-      if(typeof _replace_img == "function") ele._replace_img();
-    };
+   ele.onabort = ele.onerror = function() {
+     console.log('error occerd');
+     this.setAttribute('data-original', ele.src);
+     this.setAttribute('height', ele.clientHeight);
+     this.setAttribute('width', ele.clientWidth);
+     this.src = '';
+   };*/
   }
   Redirect.prototype = Object.create(Object.prototype, {
     constructor: {
@@ -41,7 +39,10 @@
             if(parentNode !== undefined){obj.src = '';}
             //obj.parentNode.removeChild(obj);// || obj.src = '';
                         //TODO:imgタグのsrc属性を抜いて配置し、alt属性をだす３秒後にsrc属性をセットしレジーロードを実施
+                        console.log('replace start');
                         replace_tag();
+                        console.log('replace end');
+
             //parentNode.insertBefore(replace_tag(),obj);
             //parentNode.removeChild(obj);
             if(window.stop !== undefined) {

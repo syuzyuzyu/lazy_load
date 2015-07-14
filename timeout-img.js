@@ -17,14 +17,14 @@
 
     /*this._ele.onload = function () {
         console.log('success');
-     };
-   ele.onabort = ele.onerror = function() {
+     };*/
+   this._ele.onabort = this._ele.onerror = function() {
      console.log('error occerd');
      this.setAttribute('data-original', ele.src);
      this.setAttribute('height', ele.clientHeight);
      this.setAttribute('width', ele.clientWidth);
      this.src = '';
-   };*/
+   };
   }
   Redirect.prototype = Object.create(Object.prototype, {
     constructor: {
@@ -39,9 +39,8 @@
             if(parentNode !== undefined){obj.src = '';}
             //obj.parentNode.removeChild(obj);// || obj.src = '';
                         //TODO:imgタグのsrc属性を抜いて配置し、alt属性をだす３秒後にsrc属性をセットしレジーロードを実施
-                        console.log('replace start');
                         replace_tag();
-                        console.log('replace end');
+                        obj.onabort = obj.onerror=function(){};
 
             //parentNode.insertBefore(replace_tag(),obj);
             //parentNode.removeChild(obj);

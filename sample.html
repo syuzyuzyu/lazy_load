@@ -1,12 +1,16 @@
 <html>
 <head><title>sample timeout</title></head>
 <body>
-    <img src="img/sample.png" alt="" width="200px" height="300px" class="timeout_img" alt="これはテストです"/>
+    <img src="img/sample.png" alt="" width="200px" height="300px"/>
     <img src="img/sample.png" alt="" width="200px" height="300px" id="test"/>
     <img src="img/sample.png" alt="" width="200px" height="300px"/>
+    <img src="img/sample.png" alt="" width="200px" height="300px"  class="timeout_img" alt="これはテストです"/>
     <img src="img/sample.png" alt="" width="200px" height="300px"/>
-    <img src="img/sample.png" alt="" width="200px" height="300px"/>
-    <img src="img/sample.png" alt="" width="200px" height="300px"/>
+    <img src="img/sample.png" alt="" width="200px" height="300px"  class="timeout_img" alt="これはテストです"/>
+    <img data-original="img/sample.png" height="300" width="200" class="lazy-load" src=""/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.lazyload.js"></script>
     <script type="text/javascript" src="timeout-img.js"></script>
+    <script>$('.lazy-load').lazyload({threshold : -200});</script>
 </body>
 </html>

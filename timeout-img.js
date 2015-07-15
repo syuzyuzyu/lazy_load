@@ -9,15 +9,11 @@
      change_img.setAttribute('data-original', ele.src);
      change_img.setAttribute('height', ele.clientHeight);
      change_img.setAttribute('width', ele.clientWidth);
+     change_img.setAttribute('class','lazy-load');
      change_img.setAttribute('src', '');
      ele.parentNode.insertBefore(change_img,ele);
      ele.parentNode.removeChild(ele);
-     //return change_img;
    };
-
-    /*this._ele.onload = function () {
-        console.log('success');
-     };*/
    this._ele.onabort = this._ele.onerror = function() {
      console.log('error occerd');
      this.setAttribute('data-original', ele.src);
@@ -39,11 +35,8 @@
             if(parentNode !== undefined){obj.src = '';}
             //obj.parentNode.removeChild(obj);// || obj.src = '';
                         //TODO:imgタグのsrc属性を抜いて配置し、alt属性をだす３秒後にsrc属性をセットしレジーロードを実施
-                        replace_tag();
-                        obj.onabort = obj.onerror=function(){};
-
-            //parentNode.insertBefore(replace_tag(),obj);
-            //parentNode.removeChild(obj);
+              replace_tag();
+              obj.onabort = obj.onerror=function(){};
             if(window.stop !== undefined) {
                  window.stop();//to do?
             }

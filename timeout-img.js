@@ -9,11 +9,6 @@
   //var Redirect = Redirect || {};
   var Redirect = function(ele, options){
    this._ele = ele;
-   this._interval = 1;
-   this._lazy_class = 'lazy-load';
-   this._setting = {
-     interval : 1
-   }
 
    this._replace_img = function(){
      var change_img = document.createElement('img');

@@ -2,14 +2,14 @@
   'use strict';
   var setting = {
     lazy_load : 'lazy-load',
-    interval : 1,
+    timeout : null,
+    interval : 2000,
     class_name : 'timeout_img',
     delay_img : -200 /*If the Image is timeout, loding image is lazyload that is delay*/
   };
   //var Redirect = Redirect || {};
   var Redirect = function(ele, options){
    this._ele = ele;
-
    this._replace_img = function(){
      var change_img = document.createElement('img');
      change_img.setAttribute('data-original', ele.getAttribute('src'));
@@ -20,6 +20,12 @@
      ele.parentNode.insertBefore(change_img,ele);
      ele.parentNode.removeChild(ele);
      return change_img;
+   };
+   ele.onload = function(){
+     if(setting.timeout != null){
+        clearTimeout(setting.timeout);
+        setting.timeout = null;
+     }
    };
    this._ele.onabort = this._ele.onerror = function() {
      console.log('error occerd');
@@ -37,12 +43,12 @@
       value: function() {
         console.log(this._ele.clientHeight);
         var obj = this._ele, replace_tag = this._replace_img, parentNode = this._ele.parentNode;
-        window.setTimeout(function() {
+        setting.timeout = window.setTimeout(function() {
             console.log($.fn.lazyload);
             //if(parentNode !== undefined){obj.src = '';}
             //obj.parentNode.removeChild(obj);// || obj.src = '';
               var new_img = replace_tag();
-              obj.onabort = obj.onerror=function(){};
+              obj.onabort = obj.onerror=function(){};/*clear*/
               if($.fn.lazyload !== undefined)
                     $(new_img).lazyload({threshold : setting.delay_img});
             if(window.stop !== undefined) {

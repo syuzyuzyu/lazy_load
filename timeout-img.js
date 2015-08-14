@@ -7,7 +7,7 @@
     class_name : 'timeout_img',
     delay_img : -200 /*If the Image is timeout, loding image is lazyload that is delay*/
   };
-  //var Redirect = Redirect || {};
+
   var Redirect = function(ele, options){
    this._timeout = null;
    this._ele = ele;
@@ -22,7 +22,6 @@
       if(ele.clientWidth != 0){
         change_img.setAttribute('width', ele.clientWidth);
       }
-     //change_img.setAttribute('class','lazy-load');
      change_img.setAttribute('src', setting.dummy_img);
      ele.parentNode.insertBefore(change_img,ele);
      ele.parentNode.removeChild(ele);
@@ -36,10 +35,6 @@
    };
    this._ele.onabort = this._ele.onerror = function() {
      console.log('error occerd');
-     /*this._ele.setAttribute('data-original', ele.getAttribute('src'));
-     this._ele.setAttribute('height', ele.clientHeight);
-     this._ele.setAttribute('width', ele.clientWidth);
-     this._ele.src = '';*/
    };
   }
   Redirect.prototype = Object.create(Object.prototype, {
@@ -54,11 +49,6 @@
             console.log($.fn.lazyload);
             console.log(obj.complete);
             if(!obj.complete){
-              /*if(typeof obj.naturalWidth !== "undefined" && obj.naturalWidth === 0){
-          			return false;
-          		}*/
-            //if(parentNode !== undefined){obj.src = '';}
-            //obj.parentNode.removeChild(obj);// || obj.src = '';
               var new_img = replace_tag();
               obj.onabort = obj.onerror=function(){};/*clear*/
               if($.fn.lazyload !== undefined)

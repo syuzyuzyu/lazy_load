@@ -2,7 +2,7 @@
   'use strict';
   var setting = {
     lazy_load : 'lazy-load',
-    timeout : null,
+    dummy_img : 'img/dummy.gif',
     interval : 1,
     class_name : 'timeout_img',
     delay_img : -200 /*If the Image is timeout, loding image is lazyload that is delay*/
@@ -15,14 +15,15 @@
      var change_img = document.createElement('img');
      change_img.setAttribute('data-original', ele.getAttribute('src'));
      console.log(ele.clientHeight + "_" + ele.clientWidth);
+     console.log(ele.naturalWidth + "_" + ele.naturalHeight);
      if(ele.clientHeight != 0){
        change_img.setAttribute('height', ele.clientHeight);
-      }
+     }
       if(ele.clientWidth != 0){
         change_img.setAttribute('width', ele.clientWidth);
       }
      //change_img.setAttribute('class','lazy-load');
-     change_img.setAttribute('src', '');
+     change_img.setAttribute('src', setting.dummy_img);
      ele.parentNode.insertBefore(change_img,ele);
      ele.parentNode.removeChild(ele);
      return change_img;
@@ -35,10 +36,10 @@
    };
    this._ele.onabort = this._ele.onerror = function() {
      console.log('error occerd');
-     this.setAttribute('data-original', ele.getAttribute('src'));
-     this.setAttribute('height', ele.clientHeight);
-     this.setAttribute('width', ele.clientWidth);
-     this.src = '';
+     /*this._ele.setAttribute('data-original', ele.getAttribute('src'));
+     this._ele.setAttribute('height', ele.clientHeight);
+     this._ele.setAttribute('width', ele.clientWidth);
+     this._ele.src = '';*/
    };
   }
   Redirect.prototype = Object.create(Object.prototype, {
@@ -76,6 +77,4 @@
       new Redirect(img_tag[i]).timeout();
     }
   }
-  //if($.fn.lazyload !== undefined)
-      //  $('.lazy-load').lazyload({threshold : -200});
 })(jQuery, window, document);
